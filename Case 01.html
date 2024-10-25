@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>JS Timers Assignment</title>
+    <title>JS Timers Assignment - Case 01</title>
 
     <style>
 
@@ -27,9 +27,15 @@
             justify-content: center;
         }
 
+        section > div > h3 {
+            font-size: 25px;
+        }
+
         .box {
             margin-top: 130px;
         }
+
+
 
         .scoobRunning {
             width: 113px;
@@ -54,18 +60,20 @@
         }
 
         .buttons button {
-            width: 150px;
+            width: 198px;
             height: 50px;
-            background: rgba(0, 255, 255, 0.45);
+            background: rgba(24, 202, 202, 0.75);
             font-size: 1.4rem;
-            margin: 0 10px;
+            font-weight: bold;
+            margin: 0 13px;
             border: none;
             cursor: pointer;
+            border-radius: 20px;
         }
 
         .buttons button:hover {
             background-color: #00cccc;
-            color: white;
+            color: rgba(0, 0, 0, 0.95);
         }
 
 
@@ -109,21 +117,33 @@
 </section>
 
 <script>
+    // Letters for the boxes
+    let arr = ["A", "B", "C", "D", "E", "F"];
+    let myInterval;
 
+    // Function to update the positions of letters
+    function change() {
+        let lastLetter = arr.pop(); // Remove the last letter
+        arr.unshift(lastLetter); // Add it to the front of the array
 
-    let arr = ["A", "B", "C", "D", "E"];
+        // Update the displayed letters
+        document.getElementById("1").innerText = arr[0];
+        document.getElementById("2").innerText = arr[1];
+        document.getElementById("3").innerText = arr[2];
+        document.getElementById("4").innerText = arr[3];
+        document.getElementById("5").innerText = arr[4];
+        document.getElementById("6").innerText = arr[5];
+    }
 
-    setInterval(() => {
-        let last_value = arr.pop();
-        arr.unshift(last_value);
-        console.log(arr);
+    // Start the interval for the letters to change every 2 seconds
+    document.getElementById("btn_start").addEventListener('click', function () {
+        myInterval = setInterval(change, 1000);
+    });
 
-        document.getElementsByTagName("h3")[0].innerText = arr[0];
-        document.getElementsByTagName("h3")[1].innerText = arr[1];
-        document.getElementsByTagName("h3")[2].innerText = arr[2];
-        document.getElementsByTagName("h3")[3].innerText = arr[3];
-        document.getElementsByTagName("h3")[4].innerText = arr[4];
-    }, 1000);
+    // Stop the interval
+    document.getElementById("btn_stop").addEventListener('click', function () {
+        clearInterval(myInterval);
+    });
 </script>
 
 </body>
