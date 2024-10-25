@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS Timers Assignment</title>
+
+    <style>
+
+        body {
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+
+        section {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        section > div {
+            width: 200px;
+            height: 200px;
+            background-color: white;
+            color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .box {
+            margin-top: 130px;
+        }
+
+        .scoobRunning {
+            width: 113px;
+            height: 53px;
+            background-image: url("assets/images/scooby running.gif");
+            background-size: cover;
+        }
+
+        .shaggy {
+            width: 250px;
+            height: 210px;
+            background-image: url("assets/images/Shaggy eating.png");
+            background-size: cover;
+            margin-top: 127px;
+            align-content: center;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .buttons button {
+            width: 150px;
+            height: 50px;
+            background: rgba(0, 255, 255, 0.45);
+            font-size: 1.4rem;
+            margin: 0 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .buttons button:hover {
+            background-color: #00cccc;
+            color: white;
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+<section>
+    <div class="box">
+        <div class="scoobRunning"></div>
+        <h3 id="1">A</h3>
+    </div>
+    <div class="box">
+        <div class="scoobRunning"></div>
+        <h3 id="2">B</h3>
+    </div>
+    <div class="box">
+        <div class="scoobRunning"></div>
+        <h3 id="3">C</h3>
+    </div>
+    <div class="box">
+        <div class="scoobRunning"></div>
+        <h3 id="4">D</h3>
+    </div>
+    <div class="box">
+        <div class="scoobRunning"></div>
+        <h3 id="5">E</h3>
+    </div>
+    <!--<div class="box">
+        <div class="scoobRunning"></div>
+        <h3 id="6">F</h3>
+    </div>-->
+
+    <div class="shaggy"></div>
+</section>
+
+<section class="buttons">
+    <button class="button" id="btn_start">Start</button>
+    <button class="button" id="btn_stop">Stop</button>
+</section>
+
+<script>
+
+
+    let arr = ["A", "B", "C", "D", "E"];
+
+    setInterval(() => {
+        let last_value = arr.pop();
+        arr.unshift(last_value);
+        console.log(arr);
+
+        document.getElementsByTagName("h3")[0].innerText = arr[0];
+        document.getElementsByTagName("h3")[1].innerText = arr[1];
+        document.getElementsByTagName("h3")[2].innerText = arr[2];
+        document.getElementsByTagName("h3")[3].innerText = arr[3];
+        document.getElementsByTagName("h3")[4].innerText = arr[4];
+    }, 1000);
+</script>
+
+</body>
+</html>
